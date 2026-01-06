@@ -7,3 +7,10 @@ pygame.display.set_caption("Flappy Bird")
 game_over = False 
 exit_game = False
 
+#creating a game loop
+while not exit_game:
+    pass
+
+pygame.quit()
+quit()
+
