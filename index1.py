@@ -1,16 +1,20 @@
 import pygame
-x = pygame.init()
+from pygame.locals import *
+
+pygame.init()
+
 gameWindow = pygame.display.set_mode((1200, 500))
 pygame.display.set_caption("Flappy Bird")
 
-# initializing variables
-game_over = False 
-exit_game = False
+
+run = True 
 
 #creating a game loop
-while not exit_game:
-    pass
+while run:
+    
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            run = False
 
-pygame.quit()
-quit()
+
 
