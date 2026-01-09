@@ -27,7 +27,7 @@ while run:
     gameWindow.blit(bg, (0,0))
 
     #draw and scroll the ground 
-    gameWindow.blit(ground_img, (ground_scroll,350))
+    gameWindow.blit(ground_img, (ground_scroll,375))
     ground_scroll -= scroll_speed 
     if abs(ground_scroll)> 55:
         ground_scroll = 0
