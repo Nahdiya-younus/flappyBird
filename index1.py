@@ -42,6 +42,8 @@ class Bird(pygame.sprite.Sprite):
         if self.counter > flap_cooldown:
             self.counter = 0
             self.index += 1
+            if self.index >= len(self.images):
+                self.index  =0
         self.image = self.images[self.index]
 
 
@@ -60,7 +62,7 @@ while run:
     gameWindow.blit(bg, (0,0))
 
     brid_group.draw(gameWindow)
-    brid_group.update
+    brid_group.update()
 
     #draw and scroll the ground 
     gameWindow.blit(ground_img, (ground_scroll,375))
