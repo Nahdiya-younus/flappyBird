@@ -87,6 +87,7 @@ flappy = Bird(100,int(screen_height / 2))
 brid_group.add(flappy)
 
 btm_pipe = Pipe(300, int(screen_height / 2) )
+pipe_group.add(btm_pipe)
            
 run = True 
 #creating a game loop
