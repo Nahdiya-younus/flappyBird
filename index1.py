@@ -18,6 +18,8 @@ scroll_speed = 4
 flying = False
 game_over = False
 pipe_gap = 100
+pipe_frequency = 1500 #milliseconds
+last_pipe = pygame.time.get_ticks() - pipe_frequency
 
 #load images
 bg = pygame.image.load("background.jpg")
@@ -95,10 +97,7 @@ flappy = Bird(100,int(screen_height / 2))
 
 brid_group.add(flappy)
 
-btm_pipe = Pipe(300, int(screen_height / 2), -1 )
-top_pipe = Pipe(300, int(screen_height / 2), 1 )
-pipe_group.add(btm_pipe)
-pipe_group.add(top_pipe)
+
            
 run = True 
 #creating a game loop
@@ -122,8 +121,16 @@ while run:
         game_over = True
         flying = False
 
-    if game_over == False:
-    #draw and scroll the ground 
+    if game_over == False and flying == True:
+        #generate new pipes 
+        time_now = pygame.time.get_ticks()
+        if time_now - last_pipe > pipe_frequency:
+            btm_pipe = Pipe(screen_width, int(screen_height / 2), -1 )
+            top_pipe = Pipe(screen_width, int(screen_height / 2), 1 )
+            pipe_group.add(btm_pipe)
+            pipe_group.add(top_pipe)
+            last_pipe = time_now
+        #draw and scroll the ground 
         ground_scroll -= scroll_speed 
         if abs(ground_scroll)> 55:
             ground_scroll = 0
