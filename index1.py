@@ -85,6 +85,9 @@ class Pipe(pygame.sprite.Sprite):
         if position == -1:
             self.rect.topleft = [x, y + int(pipe_gap / 2)]
 
+    def update(self):
+        self.rect.x -= scroll_speed
+
 brid_group = pygame.sprite.Group()
 pipe_group = pygame.sprite.Group()
 
