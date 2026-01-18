@@ -17,6 +17,7 @@ ground_scroll = 0
 scroll_speed = 4
 flying = False
 game_over = False
+pipe_gap = 100
 
 #load images
 bg = pygame.image.load("background.jpg")
@@ -80,9 +81,9 @@ class Pipe(pygame.sprite.Sprite):
         #position 1 is from the top, -1 is from the bottom
         if position == 1:
             self.image = pygame.transform.flip(self.image, False, True)
-            self.rect.bottomleft =[x, y]
+            self.rect.bottomleft =[x, y-int(pipe_gap / 2)]
         if position == -1:
-            self.rect.topleft = [x, y]
+            self.rect.topleft = [x, y + int(pipe_gap / 2)]
 
 brid_group = pygame.sprite.Group()
 pipe_group = pygame.sprite.Group()
