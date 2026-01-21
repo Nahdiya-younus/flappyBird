@@ -1,5 +1,6 @@
 import pygame
 from pygame.locals import *
+import random
 
 pygame.init()
 
@@ -125,11 +126,13 @@ while run:
         #generate new pipes 
         time_now = pygame.time.get_ticks()
         if time_now - last_pipe > pipe_frequency:
-            btm_pipe = Pipe(screen_width, int(screen_height / 2), -1 )
-            top_pipe = Pipe(screen_width, int(screen_height / 2), 1 )
+            pipe_height = random.randint(-100, 100)
+            btm_pipe = Pipe(screen_width, int(screen_height / 2)+ pipe_height , -1 )
+            top_pipe = Pipe(screen_width, int(screen_height / 2)+ pipe_height , 1 )
             pipe_group.add(btm_pipe)
             pipe_group.add(top_pipe)
             last_pipe = time_now
+
         #draw and scroll the ground 
         ground_scroll -= scroll_speed 
         if abs(ground_scroll)> 55:
